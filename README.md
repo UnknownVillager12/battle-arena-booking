@@ -1,73 +1,218 @@
-# Welcome to your Lovable project
+# BGMI Pro - Tournament Platform
 
-## Project info
+A professional esports tournament website built for Battlegrounds Mobile India (BGMI) competitions. Features a gaming-inspired dark theme with electric blue and neon green accents, tournament management, registration system, and payment integration.
 
-**URL**: https://lovable.dev/projects/31dcc64d-eded-49a8-a6f0-c88186d73dc5
+## 🎮 Features
 
-## How can I edit this code?
+### Tournament Management
+- **Tournament Listings** - Browse all available tournaments with filters
+- **Tournament Details** - Comprehensive tournament information with rules and prizes
+- **Registration System** - Complete team registration with validation
+- **Payment Integration** - Ready for Razorpay/UPI integration
+- **Results & Leaderboard** - Live tournament results and rankings
 
-There are several ways of editing your application.
+### User Experience
+- **Responsive Design** - Mobile-first approach with full desktop support
+- **Gaming Aesthetics** - Dark theme with neon gaming colors and animations
+- **Real-time Updates** - Live tournament status and registration counts
+- **Search & Filters** - Find tournaments and results easily
 
-**Use Lovable**
+### Pages & Components
+- 🏠 **Home/Landing** - Featured tournaments and upcoming battles
+- 🏆 **Tournament List** - All tournaments with advanced filtering
+- 📋 **Tournament Details** - Registration, rules, prize distribution
+- 📊 **Results** - Leaderboard with search functionality
+- 💳 **Payment Lookup** - Check payment status by ticket ID
+- 🛟 **Support Center** - FAQ and contact information
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/31dcc64d-eded-49a8-a6f0-c88186d73dc5) and start prompting.
+## 🚀 Tech Stack
 
-Changes made via Lovable will be committed automatically to this repo.
+- **Frontend**: React 18 + TypeScript
+- **Styling**: Tailwind CSS with custom gaming design system
+- **UI Components**: shadcn/ui with custom variants
+- **Routing**: React Router v6
+- **State Management**: React Query (TanStack Query)
+- **Build Tool**: Vite
+- **Icons**: Lucide React
+- **Animations**: Custom CSS animations with Tailwind
 
-**Use your preferred IDE**
+## 🎨 Design System
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Colors
+- **Electric Blue**: Primary gaming accent (#00D4FF)
+- **Neon Green**: Secondary accent (#39FF14) 
+- **Gaming Purple**: Tertiary accent (#BB86FC)
+- **Dark Surfaces**: Multiple dark shades for depth
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### Components
+- **Gaming Buttons**: Custom variants with hover effects and glows
+- **Tournament Cards**: Gradient backgrounds with hover animations
+- **Hero Sections**: Dynamic gradients with floating animations
+- **Form Components**: Dark themed with gaming aesthetics
 
-Follow these steps:
+## 📁 Project Structure
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+```
+src/
+├── components/           # Reusable components
+│   ├── ui/              # shadcn/ui components with gaming variants
+│   ├── Navbar.tsx       # Main navigation
+│   ├── Footer.tsx       # Site footer
+│   └── RegistrationForm.tsx  # Tournament registration modal
+├── pages/               # Route components
+│   ├── Home.tsx         # Landing page
+│   ├── TournamentList.tsx   # Tournament listings
+│   ├── TournamentDetail.tsx # Individual tournament page
+│   ├── Results.tsx      # Leaderboard and results
+│   ├── PaymentLookup.tsx    # Payment status checker
+│   └── Support.tsx      # Help and FAQ
+├── services/            # API and data management
+│   └── api.ts          # Mock API with TypeScript interfaces
+├── assets/             # Images and static files
+└── hooks/              # Custom React hooks
 ```
 
-**Edit a file directly in GitHub**
+## 🛠️ Installation & Setup
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd bgmi-tournament-website
+   ```
 
-**Use GitHub Codespaces**
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+3. **Start development server**
+   ```bash
+   npm run dev
+   ```
 
-## What technologies are used for this project?
+4. **Build for production**
+   ```bash
+   npm run build
+   ```
 
-This project is built with:
+## 🔌 API Integration
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+The project includes a mock API service (`src/services/api.ts`) with TypeScript interfaces for:
 
-## How can I deploy this project?
+- **Tournaments**: CRUD operations for tournament management
+- **Registration**: Team registration with validation
+- **Payments**: Payment processing and verification
+- **Results**: Leaderboard and tournament results
+- **Lookup**: Payment status checking
 
-Simply open [Lovable](https://lovable.dev/projects/31dcc64d-eded-49a8-a6f0-c88186d73dc5) and click on Share -> Publish.
+### Sample API Endpoints
+```typescript
+// Get tournaments with filters
+await tournamentApi.getTournaments({ status: 'upcoming', mode: 'TPP' });
 
-## Can I connect a custom domain to my Lovable project?
+// Register team for tournament
+await tournamentApi.registerForTournament(registrationData);
 
-Yes, you can!
+// Get leaderboard
+await tournamentApi.getLeaderboard(tournamentId);
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+// Lookup payment status
+await paymentApi.lookupPayment(ticketId, email);
+```
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+## 💳 Payment Integration
+
+Ready for integration with popular Indian payment gateways:
+
+- **Razorpay** - Primary recommendation
+- **UPI** - Direct UPI payments
+- **Paytm** - Popular digital wallet
+- **PhonePe** - Mobile payment solution
+
+## 🎯 Key Features Implementation
+
+### Tournament Registration Flow
+1. User selects tournament → Views details
+2. Clicks register → Opens modal with form
+3. Fills team details → Validates input
+4. Submits form → Creates payment order
+5. Redirects to payment → Processes transaction
+6. Confirms payment → Generates ticket
+
+### Responsive Design
+- Mobile-first approach with breakpoint system
+- Touch-friendly controls for mobile gaming
+- Optimized tournament cards for different screen sizes
+- Collapsible navigation for mobile devices
+
+### Gaming Aesthetics
+- Custom gradient backgrounds with gaming themes
+- Glow effects and hover animations
+- Electric color scheme matching gaming preferences
+- Typography optimized for readability and impact
+
+## 🔧 Customization
+
+### Adding New Tournament Types
+1. Update TypeScript interfaces in `api.ts`
+2. Add new tournament modes to filters
+3. Update validation rules as needed
+4. Customize prize distribution formats
+
+### Theming
+1. Modify design tokens in `src/index.css`
+2. Update Tailwind config for new colors
+3. Customize component variants in UI components
+4. Add new gradient combinations
+
+### Payment Gateway Integration
+1. Replace mock API calls with real endpoints
+2. Add payment gateway SDK integration
+3. Implement webhook handlers for payment confirmation
+4. Update order status management
+
+## 📱 Browser Support
+
+- Chrome 90+ ✅
+- Firefox 88+ ✅
+- Safari 14+ ✅
+- Edge 90+ ✅
+- Mobile browsers ✅
+
+## 🚀 Deployment
+
+The project is ready for deployment to:
+
+- **Vercel** (Recommended)
+- **Netlify**
+- **GitHub Pages**
+- **Traditional hosting**
+
+### Environment Variables
+```env
+VITE_API_BASE_URL=your-api-endpoint
+VITE_RAZORPAY_KEY=your-razorpay-key
+VITE_DISCORD_INVITE=your-discord-link
+```
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+
+## 🎮 About BGMI Pro
+
+BGMI Pro is the ultimate destination for competitive Battlegrounds Mobile India tournaments. We provide a professional platform for esports enthusiasts to compete, win prizes, and showcase their skills in organized tournaments.
+
+**Built for champions, by champions** 🏆
+
+---
+
+*Ready to dominate the battleground? Join BGMI Pro and claim your victory!*
